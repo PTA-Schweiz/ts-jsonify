@@ -11,13 +11,6 @@ after_success:
   - npm pack
 
 deploy:
-  - provider: releases
-    api_key: $GITHUB_TOKEN
-    file_glob: true
-    file: "{YOURLIB}-*.tgz"
-    skip_cleanup: true
-    on:
-      tags: true
   - provider: npm
     skip_cleanup: true
     email: "ste.staub@gmail.com"
