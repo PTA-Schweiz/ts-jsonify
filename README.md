@@ -1,5 +1,7 @@
 # ts-jsonify
 
+[![Build Status](https://travis-ci.org/PTA-Schweiz/ts-jsonify.svg?branch=master)](https://travis-ci.org/PTA-Schweiz/ts-jsonify)
+
 A simple typescript/json Serializer and deserializer. It allows to configure the mapping through annotations.
 
 ## Installation
