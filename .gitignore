@@ -10,6 +10,7 @@
 
 .idea
 dist
+ts-json-*.tgz
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

@@ -6,9 +6,12 @@
     "url": "https://github.com/PTA-Schweiz/ts-jsonify"
   },
   "description": "Simple annotation based json serializer/deserializer for typescript",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
   "scripts": {
+    "setup": "npm install",
     "build": "tsc",
+    "build-watch": "tsc --watch",
     "test": "jasmine-ts \"specs/**/*.spec.ts\""
   },
   "keywords": [

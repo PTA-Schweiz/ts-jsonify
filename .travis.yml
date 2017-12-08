@@ -1,5 +1,26 @@
-language: node_js
-node_js:
-  - '4.2'
+language: nodejs
+
 before_script:
-- npm install
+  - npm run setup
+  - npm run build
+
+script:
+  - npm run test
+
+after_success:
+  - npm pack
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: "{YOURLIB}-*.tgz"
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: npm
+    skip_cleanup: true
+    email: "ste.staub@gmail.com"
+    api_key: $NPM_TOKEN
+    on:
+      tags: true

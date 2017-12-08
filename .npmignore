@@ -1,0 +1,11 @@
+tsconfig.json
+.travis.yml
+.nojekyll
+dev/
+docs/
+dist/test/
+.npmignore
+.idea
+
+// npm pack
+{YOUR_LIB}-*.tgz# Created by .ignore support plugin (hsz.mobi)
