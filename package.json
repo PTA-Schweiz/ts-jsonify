@@ -1,0 +1,33 @@
+{
+  "name": "ts-json",
+  "version": "0.1.0",
+  "description": "Simple annotation based json serializer/deserializer for typescript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraff ./dist",
+    "test": "node_modules/.bin/karma start"
+  },
+  "keywords": [
+    "json",
+    "typescript",
+    "serializer",
+    "deserializer"
+  ],
+  "author": "ste.staub@gmail",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jasmine": "^2.8.2",
+    "core-js": "^2.5.1",
+    "jasmine-ts": "^0.2.1",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-typescript": "^3.0.8",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "@types/reflect-metadata": "0.0.5",
+    "reflect-metadata": "^0.1.10"
+  }
+}
