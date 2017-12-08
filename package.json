@@ -1,6 +1,6 @@
 {
-  "name": "ts-json",
-  "version": "0.1.0",
+  "name": "@pta-schweiz/ts-jsonify",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/PTA-Schweiz/ts-jsonify"
