@@ -9,6 +9,7 @@
 .idea/dictionaries
 
 .idea
+dist
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
