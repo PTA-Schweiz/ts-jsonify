@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rimraff ./dist",
-    "test": "node_modules/.bin/karma start"
+    "test": "node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
   "keywords": [
     "json",
