@@ -78,7 +78,8 @@ describe('Deserialize', () => {
         myMap: {
             'my-key': 'someValue'
         },
-        ignoredProperty: 'This should be ignored'
+        ignoredProperty: 'This should be ignored',
+        emptyObject: "Interesting stuff"
     };
 
     let subject = TsJsonify.deserialize(Subject, exampleJson);
@@ -102,4 +103,8 @@ describe('Deserialize', () => {
     it('should ignore values for ignored properties', () => {
         expect(subject.ignoredProperty).not.toEqual(exampleJson.ignoredProperty);
     });
+
+    // it('should set empty object', () => {
+    //     expect(subject.emptyObject).toEqual("Interesting stuff");
+    // });
 });

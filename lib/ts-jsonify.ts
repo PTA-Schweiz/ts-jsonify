@@ -36,6 +36,9 @@ export class TsJsonify {
      * @returns {any}
      */
     static serialize(obj: any, converter?: IConverter<any>): any {
+        if (obj === undefined || obj == null) {
+            return undefined;
+        }
         if (converter) {
             return converter.toJson(obj);
         }

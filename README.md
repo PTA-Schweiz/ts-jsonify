@@ -15,17 +15,17 @@ npm i --save ts-jsonify
 ```typescript
 class Address {
     @JsonProperty('first-name')
-    firstName: string;
+    firstName: string = ";
 
     @JsonProperty('last-name')/
-    lastName: string;
+    lastName: string = "";
 
-    street: string;
+    street: string = "";
 }
 
 class User {
-    id: number;
-    email: string;
+    id: number = 0;
+    email: string = "";
 
     // Non primitive types (will create instances of Address)
     @JsonProperty({ clazz: Adress });
@@ -89,3 +89,9 @@ console.log(jsonObj.name);
 // "HANS"
 
 ```
+
+## Known Issues
+
+### Non initialized Properties
+Due to the concept how TsJsonify works, it can only assign properties that are initialized
+after instantiating the object.
