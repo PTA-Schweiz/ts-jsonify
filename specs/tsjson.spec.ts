@@ -35,6 +35,10 @@ class Subject {
     @JsonProperty({clazz: Map, converter: MapConverter})
     myMap = new Map<string, string>([['1', "Hello"], ['2', "World"]]);
 
+
+    @JsonProperty('Renamed')
+    namedStringProperty= "";
+
     @JsonIgnore()
     ignoredProperty = "Allways ignored";
 
@@ -78,6 +82,7 @@ describe('Deserialize', () => {
         myMap: {
             'my-key': 'someValue'
         },
+        Renamed: "new string",
         ignoredProperty: 'This should be ignored',
         emptyObject: "Interesting stuff"
     };
@@ -86,6 +91,10 @@ describe('Deserialize', () => {
 
     it('should have called the constructor', () => {
        expect(subject.constructorCalled).toBeTruthy();
+    });
+
+    it('Should have renamed the property with simple type', () => {
+        expect(subject.namedStringProperty).toEqual("new string");
     });
 
     it('should have deserialized the map', () => {

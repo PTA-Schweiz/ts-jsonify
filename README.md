@@ -15,9 +15,9 @@ npm i --save ts-jsonify
 ```typescript
 class Address {
     @JsonProperty('first-name')
-    firstName: string = ";
+    firstName: string = ""
 
-    @JsonProperty('last-name')/
+    @JsonProperty('last-name')
     lastName: string = "";
 
     street: string = "";

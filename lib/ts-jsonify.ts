@@ -116,9 +116,9 @@ export class TsJsonify {
                     return TsJsonify.deserialize(clazz, innerJson, propertyConverter);
                 }
 
-                if (TsJsonify.isArray(clazz)) {
+                if (TsJsonify.isArray(innerJson)) {
                     let metadata = <any>getJsonProperty(obj, key);
-                    if (metadata.clazz || TsJsonify.isPrimitive(clazz)) {
+                    if (metadata.clazz || TsJsonify.isPrimitive(innerJson)) {
                         if (innerJson && TsJsonify.isArray(innerJson)) {
                             return innerJson.map(
                                 (item: any) => TsJsonify.deserialize(metadata.clazz, item)
@@ -130,7 +130,7 @@ export class TsJsonify {
                         return innerJson;
                     }
 
-                } else if (!TsJsonify.isPrimitive(clazz)) {
+                } else if (!TsJsonify.isPrimitive(innerJson)) {
                     // None primitive types will use deserialize
                     return TsJsonify.deserialize(clazz, innerJson);
                 } else {
