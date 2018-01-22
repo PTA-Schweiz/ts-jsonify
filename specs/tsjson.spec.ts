@@ -39,6 +39,8 @@ class Subject {
     @JsonProperty('Renamed')
     namedStringProperty= "";
 
+    propertyUndefinedVal: String = undefined;
+
     @JsonIgnore()
     ignoredProperty = "Allways ignored";
 
@@ -69,6 +71,10 @@ describe('Serialize', () => {
        expect(serialized["ignoredProperty"]).toBeUndefined();
     });
 
+    it('should ignore undefined properties', () => {
+        expect(serialized["propertyUndefinedVal"]).toBeUndefined();
+    });
+
 });
 
 describe('Deserialize', () => {
@@ -82,6 +88,7 @@ describe('Deserialize', () => {
         myMap: {
             'my-key': 'someValue'
         },
+        propertyUndefinedVal: "something",
         Renamed: "new string",
         ignoredProperty: 'This should be ignored',
         emptyObject: "Interesting stuff"
@@ -111,6 +118,10 @@ describe('Deserialize', () => {
 
     it('should ignore values for ignored properties', () => {
         expect(subject.ignoredProperty).not.toEqual(exampleJson.ignoredProperty);
+    });
+
+    it('should not ignore undefined values when serializing', () => {
+        expect(subject.propertyUndefinedVal).toEqual(exampleJson.propertyUndefinedVal);
     });
 
     // it('should set empty object', () => {
