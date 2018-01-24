@@ -42,7 +42,7 @@ class Subject {
     propertyUndefinedVal: String = undefined;
 
     @JsonProperty("nullval")
-    nullProperty = null;
+    nullProperty: any = null;
 
     @JsonIgnore()
     ignoredProperty = "Allways ignored";
