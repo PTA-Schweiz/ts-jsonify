@@ -41,18 +41,21 @@ class Subject {
 
     propertyUndefinedVal: String = undefined;
 
+    @JsonProperty("nullval")
+    nullProperty = null;
+
     @JsonIgnore()
     ignoredProperty = "Allways ignored";
 
     constructor() {
         this.constructorCalled = true;
-        this.nestedObject = new Address();
     }
 }
 
 describe('Serialize', () => {
 
     let subject = new Subject();
+    subject.nestedObject = new Address();
     let serialized = TsJsonify.serialize(subject);
 
     it('should set propper keys', () => {
@@ -73,6 +76,10 @@ describe('Serialize', () => {
 
     it('should ignore undefined properties', () => {
         expect(serialized["propertyUndefinedVal"]).toBeUndefined();
+    });
+
+    it('should serialize null properties', () => {
+        expect(serialized["nullval"]).toBeNull();
     });
 
 });
@@ -128,7 +135,23 @@ describe('Deserialize', () => {
         expect(subject.propertyUndefinedVal).toEqual(exampleJson.propertyUndefinedVal);
     });
 
-    // it('should set empty object', () => {
-    //     expect(subject.emptyObject).toEqual("Interesting stuff");
-    // });
+    xit('should set empty object (this will not be supported)', () => {
+        expect(subject.emptyObject).toEqual("Interesting stuff");
+    });
+
+    it('should set properties to null if it is null in json', () => {
+        let exampleJsonWithNullValues = { "other-key": "some value", "address": null };
+        let nullCheckSubject = TsJsonify.deserialize(Subject, exampleJsonWithNullValues);
+        expect(nullCheckSubject.nestedObject).toBeNull();
+    });
+
+    it('should keep default initialized value when property is not existing in json', () => {
+        let _subject = TsJsonify.deserialize(Subject, {});
+        expect(_subject.propertyWithCustomKey).toEqual(new Subject().propertyWithCustomKey);
+    });
+
+    it('should return null when passing null', () => {
+        let nullCheckSubject = TsJsonify.deserialize(Subject, null);
+        expect(nullCheckSubject).toBeNull();
+    });
 });

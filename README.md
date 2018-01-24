@@ -62,7 +62,13 @@ this.http.post('/users', userDto).subscribe((response) => {
 
 ```
 
-### Custom Converters
+## Undefined and null handling
+When deserializing, json null will be treated as javascript null, whereas properties that are not available
+ in the json will be ignored and default value is kept.
+
+When serializing
+
+## Custom Converters
 
 You can create your own converters for any property. It must implement the IConverter interface.
 
@@ -94,4 +100,4 @@ console.log(jsonObj.name);
 
 ### Non initialized Properties
 Due to the concept how TsJsonify works, it can only assign properties that are initialized
-after instantiating the object.
+after instantiating the object, it can be initialized with undefined though.

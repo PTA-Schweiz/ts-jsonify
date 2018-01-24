@@ -36,9 +36,10 @@ export class TsJsonify {
      * @returns {any}
      */
     static serialize(obj: any, converter?: IConverter<any>): any {
-        if (obj === undefined || obj == null) {
+        if (obj === undefined) {
             return undefined;
         }
+        if (obj === null) { return null; }
         if (converter) {
             return converter.toJson(obj);
         }
@@ -85,9 +86,10 @@ export class TsJsonify {
      * @param converter
      * @returns {any}
      */
-    static deserialize<T>(clazz:{new(): T}, jsonObject: any, converter?: IConverter<T>) {
+    static deserialize<T>(clazz:{new(): T}, jsonObject: any, converter?: IConverter<T>): T {
 
         if ((clazz === undefined) || (jsonObject === undefined)) return undefined;
+        if (jsonObject === null) { return null; }
         if (converter) {
             return converter.fromJson(jsonObject);
         }
@@ -145,7 +147,8 @@ export class TsJsonify {
             // If we have metadata defined, we deserialize with the property metadata
             if(!ignoreProperty) {
                 if (propertyMetadata) {
-                    (<any>obj)[key] = propertyMetadataFn(propertyMetadata);
+                    let val =  propertyMetadataFn(propertyMetadata);
+                    if(val !== undefined) (<any>obj)[key] = val;
                 } else {
                     // if no metadata, just apply the object
                     if (jsonObject && jsonObject[key] !== undefined) {
