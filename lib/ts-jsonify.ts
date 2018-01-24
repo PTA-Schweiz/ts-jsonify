@@ -107,8 +107,7 @@ export class TsJsonify {
 
                 // json data for the current property
                 let innerJson = jsonObject ? jsonObject[propertyName] : undefined;
-
-                let clazz = getClazz(obj, key);
+                let clazz = propertyMetadata.clazz ? propertyMetadata.clazz : getClazz(obj, key);
 
                 // We use the converter if we have one defined
                 if (propertyMetadata.converter) {

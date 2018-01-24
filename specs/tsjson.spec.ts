@@ -27,7 +27,7 @@ class Subject {
     emptyObject: any;
 
     @JsonProperty({name: 'address', clazz: Address})
-    nestedObject: Address;
+    nestedObject: Address | undefined = undefined;
 
     @JsonProperty('other-key')
     propertyWithCustomKey = "my test";
@@ -112,6 +112,10 @@ describe('Deserialize', () => {
         expect(subject.propertyOne).toEqual(12);
     });
 
+    it('should use clazz from Metadata to do conversion', () => {
+       expect(typeof(subject.nestedObject)).toEqual('Adress');
+    });
+
     it('should correctly instantialte nested objects', () => {
         expect(subject.nestedObject.street).toEqual('Somewhere 001');
     });
@@ -124,7 +128,7 @@ describe('Deserialize', () => {
         expect(subject.propertyUndefinedVal).toEqual(exampleJson.propertyUndefinedVal);
     });
 
-    // it('should set empty object', () => {
-    //     expect(subject.emptyObject).toEqual("Interesting stuff");
-    // });
+    it('should set empty object', () => {
+        expect(subject.emptyObject).toEqual("Interesting stuff");
+    });
 });
