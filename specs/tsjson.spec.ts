@@ -140,7 +140,7 @@ describe('Deserialize', () => {
     // });
 
     it('should set properties to null if it is null in json', () => {
-        let exampleJsonWithNullValues = { "other-key": "some value", "address": null };
+        let exampleJsonWithNullValues = { "other-key": "some value", "address": <Address>null };
         let nullCheckSubject = TsJsonify.deserialize(Subject, exampleJsonWithNullValues);
         expect(nullCheckSubject.nestedObject).toBeNull();
     });
