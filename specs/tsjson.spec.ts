@@ -135,9 +135,9 @@ describe('Deserialize', () => {
         expect(subject.propertyUndefinedVal).toEqual(exampleJson.propertyUndefinedVal);
     });
 
-    xit('should set empty object (this will not be supported)', () => {
-        expect(subject.emptyObject).toEqual("Interesting stuff");
-    });
+    // it('should set empty object (this will not be supported)', () => {
+    //     expect(subject.emptyObject).toEqual("Interesting stuff");
+    // });
 
     it('should set properties to null if it is null in json', () => {
         let exampleJsonWithNullValues = { "other-key": "some value", "address": null };
